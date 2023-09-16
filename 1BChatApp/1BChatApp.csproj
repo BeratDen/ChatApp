@@ -10,8 +10,6 @@
 
   <ItemGroup>
     <Folder Include="Icons\" />
-    <Folder Include="Themes\" />
-    <Folder Include="MVVM\Model\" />
     <Folder Include="Core\" />
     <Folder Include="MVVM\View\" />
   </ItemGroup>
