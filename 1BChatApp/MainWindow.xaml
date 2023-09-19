@@ -33,7 +33,7 @@
                 MouseDown="Border_MouseDown">
 
             <Grid HorizontalAlignment="Stretch">
-                <Label Content="1B_Chat"
+                <Label Content="Chat"
                        Foreground="Gray"
                        FontWeight="SemiBold" />
 
@@ -66,14 +66,8 @@
                             Foreground="Gray"
                             FontWeight="Bold"
                             Click="CloseButton_Click" />
-
-
                 </StackPanel>
-
             </Grid>
-
-
-
         </Border>
 
         <Grid Background="#2f3136"
@@ -84,19 +78,131 @@
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
 
-            <Label Content="Contacts"
-                   VerticalAlignment="Center"
-                   FontWeight="Medium"
-                   Foreground="Gray" Margin="8,0,0,0" />
 
-            <ListView 
-                ItemsSource="{Binding Contacts}"
-                Background="Transparent"
-                BorderThickness="0"
-                Grid.Row="1"
-                ItemContainerStyle="{StaticResource ContactCard}"
-                />
 
+            <Button Content="Connect"
+                    VerticalAlignment="Center"
+                    FontWeight="Medium"
+                    Margin="8,0,8,0"
+                    Command="{Binding ConnectToServerCommand}" />
+
+
+            <ListView ItemsSource="{Binding Users}"
+                      SelectedItem="{Binding SelectedContact}"
+                      Background="Transparent"
+                      BorderThickness="0"
+                      Grid.Row="1"
+                      ItemContainerStyle="{StaticResource ContactCard}" />
+
+
+            <StackPanel Grid.Row="2"
+                        Orientation="Horizontal"
+                        Background="#292b2f">
+                <Border CornerRadius="25"
+                        Width="30"
+                        Height="30"
+                        Background="#3bff6f"
+                        Margin="18,0,0,0" />
+                <StackPanel VerticalAlignment="Center">
+                    <Label Content="Username"
+                           Foreground="White"
+                           FontWeight="SemiBold"
+                           Margin="0,-5,0,-5" />
+                    <Label Content="Custom Status"
+                           Foreground="Gray"
+                           FontWeight="SemiBold"
+                           FontSize="10"
+                           Margin="0,-8,0,-5" />
+                </StackPanel>
+            </StackPanel>
+
+        </Grid>
+
+        <Grid Grid.Row="1"
+              Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition />
+                <RowDefinition Height="70" />
+            </Grid.RowDefinitions>
+            <Border BorderBrush="#2f3136"
+                    BorderThickness="0,0,0,2">
+                <Grid HorizontalAlignment="Stretch"
+                      Margin="8">
+
+                    <TextBox Width="100"
+                             Height="25"
+                             HorizontalAlignment="Left"
+                             Style="{StaticResource UsernameBox}"
+                             Margin="10,4,0,4" />
+
+                    <!--<Label Content="@Username"
+                           Foreground="White"
+                           FontWeight="Bold"
+                           Margin="5,0,5,0"
+                           VerticalAlignment="Center" />-->
+
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right">
+                        <Image Width="20"
+                               Height="20"
+                               RenderOptions.BitmapScalingMode="Fant"
+                               Margin="5,0,5,0"
+                               Source="./Icons/phone-solid.png" />
+                        <Image Width="20"
+                               Height="20"
+                               RenderOptions.BitmapScalingMode="Fant"
+                               Margin="5,0,5,0"
+                               Source="./Icons/camera-solid.png" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <ListView ItemsSource="{Binding Messages}"
+                      Background="Transparent"
+                      BorderThickness="0"
+                      ItemContainerStyle="{StaticResource ChatItem}"
+                      Margin="8,0,0,0"
+                      Grid.Row="1">
+            </ListView>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="148" />
+                </Grid.ColumnDefinitions>
+
+                <TextBox Text="Message @Username"
+                         Style="{StaticResource MessageBox}"
+                         Margin="8,10,10,10" />
+
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Left"
+                            Grid.Column="1"
+                            Margin="6,0,0,0"
+                            Width="103">
+
+                    <Button Content="Send Message"
+                            VerticalAlignment="Center"
+                            FontWeight="Medium"
+                            Height="50"
+                            Margin="8,0,8,0"
+                            Command="{Binding SendMessageCommand}"
+                            Width="90" />
+                    <!--<Image Source="./Icons/plus-solid.png"
+                           Width="20"
+                           Height="20"
+                           RenderOptions.BitmapScalingMode="Fant"
+                           Margin="5,5,5,0" />
+                    <Image Source="./Icons/paper-plane-regular.png"
+                           Width="20"
+                           Height="20"
+                           RenderOptions.BitmapScalingMode="Fant"
+                           Margin="5,5,16,0" />-->
+
+                </StackPanel>
+
+            </Grid>
 
         </Grid>
 
